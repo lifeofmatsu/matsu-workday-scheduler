@@ -47,22 +47,11 @@ body {
     font-size: 2.0rem;
 }
 
-body.light {
-    background-color: var(--dawn-base);
-    color: var(--dawn-foam);
-}
-
-body.dark {
-    background-color: var(--moon-base);
-    color: var(--moon-foam);
-}
-
 div {
     font-size: 1.5rem;
 }
 
 h1, h2, h3, h4, p {
-    color: var(--dawn-text);
     line-height: 1.0; 
     margin-top: 0.25rem;
     margin-bottom: 1rem;
@@ -91,10 +80,7 @@ p {
 }
 
 textarea {
-    /* background: transparent; */
-    /* border: none; */
     resize: none;
-    background-color: #f4e6d8;
     border: 2px var(--dawn-iris);
     padding: 10px;
 }
@@ -147,16 +133,16 @@ textarea {
 }
 
 /* 
-==============
+=============
 SWITCH BUTTON
 
 adapted from:
     UCSD Coding Bootcamp (https://git.bootcampcontent.com/University-of-California---San-Diego/UCSD-VIRT-FSF-PT-09-2023-U-LOLC/-/blob/d5e6546770e3a300de6659bbe57c3cc0da5bb293/04-Web-APIs/01-Activities/11-Ins_Event-Listener/assets/css/style.css)
     W3Schools: (https://www.w3schools.com/howto/howto_css_switch.asp)
-==============
+=============
 */
 
-/* style switch button */
+/* switch button */
 .switch {
     position: relative;
     display: inline-block;
@@ -220,62 +206,122 @@ input:checked + .toggle:before {
 }
  
 /* 
-==================
-LIGHT & DARK MODE 
-
-partially adapted from:
-    UCSD Coding Bootcamp ()
-==================
+=================
+GRID & GRID ITEMS
+=================
 */
 
+.header-grid {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 1fr 120px 60px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.grid-item1 {
+    place-self: center start;
+}
+
+.grid-item2 {
+    font-size: 2rem;
+    place-self: center end;
+}
+
+.grid-item3 {
+    place-self: center end;
+}
+
+.grid-item4 {
+    font-size: 1.75rem;
+    grid-row: 2 / span 1;
+    place-self: start start;
+    row-gap: 10px;
+}
+
+.grid-item5 {
+    font-size: 3rem;
+    grid-row: 3 / span 1;
+    place-self: end start;
+}
+
+.grid-item6 {
+    font-size: 2.5rem;
+    grid-area: 4 / 1 / 4 / 4;
+    place-self: start center;
+}
+
+/* 
+===================
+LIGHT & DARK THEMES 
+===================
+*/
+ 
 /* light mode */
 .light {
     background-color: var(--dawn-base);
-    color: var(--dawn-foam);
-    height: 100vh;
+    color: #3d3b39;
+    /* height: 100vh; */
+}
+
+.light body {
+    background-color: var(--dawn-base);
+    color: #3d3b39;
+}
+
+.light div h1 h2 h3 p {
+    color: #3d3b39;
+}
+
+.light textarea {
+    background-color: #f4e6d8;
+    color: var(--dawn-text);
+}
+
+.light .grid-item1 .grid-item4 .grid-item5 .grid-item6 {
+    color: #3d3b39;
+}
+
+.light .grid-item2 {
+    color: var(--dawn-love);
+}
+
+.light .grid-item4 {
+    color: #dcad7d;
+}
+
+.light .hour {
+    color: #7d817c;
 }
 
 /* dark mode */
 .dark {
     background-color: var(--moon-base);
-    color: var(--moon-overlay);
-    height: 100vh;
+    color: var(--moon-text);
+    /* height: 100vh; */
 }
 
-.header-grid {
-    display: grid;
-    grid-template-columns: 1fr 120px 60px;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 5px 20px;
-    justify-content: end;
-    align-content: space-evenly;
-    justify-items: end;
-    align-items: center;
+.dark body {
+    background-color: var(--moon-base);
+    color: var(--moon-text);
 }
 
-.grid-item1 {
-    justify-self: start;
+.dark div h1 h2 h3 p {
+    color: var(--moon-text);
 }
 
-.grid-item2 {
-    color: var(--dawn-text);
-    font-size: 2rem;
+.dark textarea {
+    background-color: var(--moon-overlay);
+    color: var(--moon-text);
 }
 
-.grid-item4 {
-    color: var(--dawn-rose);
-    font-size: 2rem;
-    justify-self: start;
+.dark .grid-item1 .grid-item4 .grid-item5 .grid-item6 {
+    color: var(--moon-text);
 }
 
-.grid-item5 {
-    color: var(--dawn-rose);
-    font-size: 2rem;
-    justify-self: start;
+.dark .grid-item2 {
+    color: var(--moon-love);
 }
 
-.grid-item6 {
-    color: var(--dawn-rose);
-    font-size: 2rem;
-    justify-self: start;
+.dark .grid-item4 {
+    color: #dcad7d;
 }
