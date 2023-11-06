@@ -1,14 +1,101 @@
+:root {
+    /* rose pine dawn/moon color schemes & property names (https://rosepinetheme.com/) */
+    --dawn-base: #faf4ed;
+    --dawn-surface: #fffaf3;
+    --dawn-overlay: #f2e9e1;
+    --dawn-muted: #9893a5;
+    --dawn-subtle: #797593;
+    --dawn-text: #575279;
+    --dawn-love: #b4637a;
+    --dawn-gold: #ea9d34;
+    --dawn-rose: #d7827e;
+    --dawn-pine: #286983;
+    --dawn-foam: #56949f;
+    --dawn-iris: #907aa9;
+    --dawn-highlight-low: #f4ede8;
+    --dawn-highlight-med: #dfdad9;
+    --dawn-highlight-high: #cecacd;
+
+    --moon-base: #232136;
+    --moon-surface: #2a273f;
+    --moon-overlay: #393552;
+    --moon-muted: #6e6a86;
+    --moon-subtle: #908caa;
+    --moon-text: #e0def4;
+    --moon-love: #eb6f92;
+    --moon-gold: #f6c177;
+    --moon-rose: #d7827e;
+    --moon-pine: #3e8fb0;
+    --moon-foam: #9ccfd8;
+    --moon-iris: #c4a7e7;
+    --moon-highlight-low: #2a283e;
+    --moon-highlight-med: #44415a;
+    --moon-highlight-high: #56526e;
+}
+
+/* ::selection {
+    background-color: var(--highlight-high);
+    color: var(--base);
+} */
+
+html {
+    font-size: 62.5%;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-  }
-  
+    font-size: 2.0rem;
+}
+
+body.light {
+    background-color: var(--dawn-base);
+    color: var(--dawn-foam);
+}
+
+body.dark {
+    background-color: var(--moon-base);
+    color: var(--moon-foam);
+}
+
+div {
+    font-size: 1.5rem;
+}
+
+h1, h2, h3, h4, p {
+    color: var(--dawn-text);
+    line-height: 1.0; 
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.5rem;
+}
+
+p {
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
 textarea {
-    background: transparent;
-    border: none;
+    /* background: transparent; */
+    /* border: none; */
     resize: none;
-    color: #000000;
-    border-left: 1px solid black;
+    background-color: #f4e6d8;
+    border: 2px var(--dawn-iris);
     padding: 10px;
 }
 
@@ -21,39 +108,174 @@ textarea {
 }
 
 .row {
-    border-top: 1px solid white;
+    border: 2px var(--dawn-iris);
 }
 
 .hour {
-    background-color: #ffffff;
-    color: #000000;
-    border-top: 1px dashed #000000;
+    background-color: #d0dece;
+    color: var(--dawn-text);
+    border-top: 2px dashed var(--dawn-iris);
 }
 
 .past {
-    background-color: #d3d3d3;
+    background-color: var(--dawn-muted);
     color: white;
 }
 
 .present {
-    background-color: #ff6961;
+    background-color: var(--dawn-love);
     color: white;
 }
 
 .future {
-    background-color: #77dd77;
+    background-color: var(--moon-foam);
     color: white;
 }
 
 .saveBtn {
-    border-left: 1px solid black;
+    border: 2px var(--dawn-iris);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: #06aed5;
-    color: white;
+    background-color: #d0dece;
+    color: var(--dawn-text);
+    font-size: 15px;
 }
 
 .saveBtn i:hover {
     font-size: 20px;
     transition: all 0.3s ease-in-out;
+}
+
+/* 
+==============
+SWITCH BUTTON
+
+adapted from:
+    UCSD Coding Bootcamp (https://git.bootcampcontent.com/University-of-California---San-Diego/UCSD-VIRT-FSF-PT-09-2023-U-LOLC/-/blob/d5e6546770e3a300de6659bbe57c3cc0da5bb293/04-Web-APIs/01-Activities/11-Ins_Event-Listener/assets/css/style.css)
+    W3Schools: (https://www.w3schools.com/howto/howto_css_switch.asp)
+==============
+*/
+
+/* style switch button */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* disable default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* toggle switch */
+.toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dawn-overlay); /* color: dark mode toggled OFF */
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.toggle:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--dawn-text); /* color: toggle switch button */
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .toggle {
+    background-color: #ebbcba; /* color: dark mode toggled ON */
+}
+
+/* input:focus + .slider {
+    box-shadow: black;
+} */
+
+input:checked + .toggle:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* style round toggle switch */
+.toggle.round {
+    border-radius: 34px;
+}
+
+.toggle.round:before {
+    border-radius: 50%;
+}
+ 
+/* 
+==================
+LIGHT & DARK MODE 
+
+partially adapted from:
+    UCSD Coding Bootcamp ()
+==================
+*/
+
+/* light mode */
+.light {
+    background-color: var(--dawn-base);
+    color: var(--dawn-foam);
+    height: 100vh;
+}
+
+/* dark mode */
+.dark {
+    background-color: var(--moon-base);
+    color: var(--moon-overlay);
+    height: 100vh;
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: 1fr 120px 60px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px 20px;
+    justify-content: end;
+    align-content: space-evenly;
+    justify-items: end;
+    align-items: center;
+}
+
+.grid-item1 {
+    justify-self: start;
+}
+
+.grid-item2 {
+    color: var(--dawn-text);
+    font-size: 2rem;
+}
+
+.grid-item4 {
+    color: var(--dawn-rose);
+    font-size: 2rem;
+    justify-self: start;
+}
+
+.grid-item5 {
+    color: var(--dawn-rose);
+    font-size: 2rem;
+    justify-self: start;
+}
+
+.grid-item6 {
+    color: var(--dawn-rose);
+    font-size: 2rem;
+    justify-self: start;
 }
