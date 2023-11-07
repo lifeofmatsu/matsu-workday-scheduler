@@ -1,3 +1,4 @@
+<!-- starter code provided by Xandromus and team with the UCSD Coding Bootcamp. -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,12 +17,14 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+
+    <!-- 'Raleway' font sourced from Google Fonts api (https://fonts.google.com/specimen/Raleway?query=raleway) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    
     <link rel="stylesheet" href="./Assets/css/style.css" />
-    <title>Work Day Scheduler</title>
+    <title>Work Day Calendar</title>
   </head>
 
   <body id="page" class="page-container light">
@@ -29,12 +32,12 @@
         <section class="pt-4 px-3 pb-1 mx-4">
             <div class="header-grid">
                 <h1 class="grid-item1">Work Day Calendar</h1>
-                <div class="grid-item2">Dark Mode</div>
-                <label class="grid-item3 switch">
+                <div class="grid-item2">DARK MODE</div>
+                <label class="grid-item3 switch" title="change theme" aria-label="change theme">
                     <input type="checkbox" id="theme-toggle">
                     <span class="toggle round"></span>
                 </label>
-                <div class="grid-item4 lead">A simple event calendar for planning your work day.</div>
+                <div class="grid-item4 lead">A simple event calendar to keep your work day organized.</div>
                 <p id="monthYear" class="grid-item5 lead"></p>
                 <p id="monthDay" class="grid-item6 lead" style="text-decoration:underline"></p>
             </div>
@@ -54,7 +57,7 @@
 
         <!-- 8am event block (because I have to start work at 8...) -->
         <div id="hour-8" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>8:00am</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">8:00am</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -63,7 +66,7 @@
 
         <!-- 9am event block -->
         <div id="hour-9" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>9:00am</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">9:00am</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -72,7 +75,7 @@
 
         <!-- 10am event block-->
         <div id="hour-10" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>10:00am</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">10:00am</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -81,7 +84,7 @@
 
         <!-- 11am event block -->
         <div id="hour-11" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>11:00am</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">11:00am</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -90,7 +93,7 @@
 
         <!-- 12pm event block -->
         <div id="hour-12" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>12:00pm</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">12:00pm</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -99,7 +102,7 @@
 
         <!-- 1pm event block -->
         <div id="hour-13" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>1:00pm</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">1:00pm</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -108,7 +111,7 @@
 
         <!-- 2pm event block -->
         <div id="hour-14" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>2:00pm</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">2:00pm</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -117,7 +120,7 @@
 
         <!-- 3pm event block -->
         <div id="hour-15" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>3:00pm</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">3:00pm</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -126,7 +129,7 @@
 
         <!-- 4pm event block -->
         <div id="hour-16" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>4:00pm</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">4:00pm</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>
@@ -135,7 +138,7 @@
 
         <!-- 5pm event block -->
         <div id="hour-17" class="row time-block">
-            <div class="col-2 col-md-1 hour text-center py-3"><strong>5:00pm</strong></div>
+            <div class="col-2 col-md-1 hour text-center py-3">5:00pm</div>
             <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
             <button class="btn saveBtn col-2 col-md-1" title="save" aria-label="save">
             <i class="fas fa-save" aria-hidden="true"></i>

@@ -1,49 +1,37 @@
+/* starter code provided by Xandromus and team with the UCSD Coding Bootcamp. */
 :root {
-    /* rose pine dawn/moon color schemes & property names (https://rosepinetheme.com/) */
-    --dawn-base: #faf4ed;
-    --dawn-surface: #fffaf3;
-    --dawn-overlay: #f2e9e1;
-    --dawn-muted: #9893a5;
-    --dawn-subtle: #797593;
-    --dawn-text: #575279;
-    --dawn-love: #b4637a;
-    --dawn-gold: #ea9d34;
-    --dawn-rose: #d7827e;
-    --dawn-pine: #286983;
-    --dawn-foam: #56949f;
-    --dawn-iris: #907aa9;
-    --dawn-highlight-low: #f4ede8;
-    --dawn-highlight-med: #dfdad9;
-    --dawn-highlight-high: #cecacd;
+    /* Tokyo Night Light/Storm color palettes by enkia (https://github.com/enkia/tokyo-night-vscode-theme) */
+    --light-base: #d5d6db;
+    --light-text: #343b58;
+    --light-colbgd: #cfc9c2;
+    --light-colfgd: #5a4a78;
+    --light-border: #9699a3;
 
-    --moon-base: #232136;
-    --moon-surface: #2a273f;
-    --moon-overlay: #393552;
-    --moon-muted: #6e6a86;
-    --moon-subtle: #908caa;
-    --moon-text: #e0def4;
-    --moon-love: #eb6f92;
-    --moon-gold: #f6c177;
-    --moon-rose: #d7827e;
-    --moon-pine: #3e8fb0;
-    --moon-foam: #9ccfd8;
-    --moon-iris: #c4a7e7;
-    --moon-highlight-low: #2a283e;
-    --moon-highlight-med: #44415a;
-    --moon-highlight-high: #56526e;
+    --storm-base: #24283b;
+    --storm-text: #a9b1d6;
+    --storm-colbgd: #414868; 
+    --storm-colfgd: #7aa2f7;
+    --storm-border: #565f89;
+
+    --tokyo-toggle: #0f4b6e;
+    --light-toggle: #cfc9c2; 
+    --storm-toggle: #565a6e;
+
+    /* past, present, future themes sourced from Microsoft Excel cell styles*/
+    --future-green: #006100;
+    --future-green-bgd: #c6efce;
+    --present-red: #9c0006;
+    --present-red-bgd: #ffc7ce;
+    --past-faded: #bfbfbf;
+    --past-faded-bgd: #f2f2f2;
 }
-
-/* ::selection {
-    background-color: var(--highlight-high);
-    color: var(--base);
-} */
 
 html {
     font-size: 62.5%;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 2.0rem;
 }
 
@@ -59,6 +47,7 @@ h1, h2, h3, h4, p {
 
 h1 {
     font-size: 4rem;
+    font-weight: 500;
 }
 
 h2 {
@@ -69,19 +58,17 @@ h3 {
     font-size: 3rem;
 }
 
-h4 {
-    font-size: 2.5rem;
-}
-
 p {
+    font-size: 2rem;
+    font-weight: 200;
     line-height: 1.5;
     margin-bottom: 2rem;
-    font-size: 2rem;
 }
 
 textarea {
+    background: transparent;
+    border-top: 2px;
     resize: none;
-    border: 2px var(--dawn-iris);
     padding: 10px;
 }
 
@@ -93,42 +80,29 @@ textarea {
     border-radius: 15px;
 }
 
-.row {
-    border: 2px var(--dawn-iris);
+.past textarea {
+    background-color: #f2f2f2;
+    color: #bfbfbf;
 }
 
-.hour {
-    background-color: #d0dece;
-    color: var(--dawn-text);
-    border-top: 2px dashed var(--dawn-iris);
+.present textarea {
+    background-color: #ffc7ce;    
+    color: #9c0006;
 }
 
-.past {
-    background-color: var(--dawn-muted);
-    color: white;
-}
-
-.present {
-    background-color: var(--dawn-love);
-    color: white;
-}
-
-.future {
-    background-color: var(--moon-foam);
-    color: white;
+.future textarea {
+    background-color: #c6efce;
+    color: #006100;
 }
 
 .saveBtn {
-    border: 2px var(--dawn-iris);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: #d0dece;
-    color: var(--dawn-text);
-    font-size: 15px;
+    font-size: 30px;
 }
 
 .saveBtn i:hover {
-    font-size: 20px;
+    font-size: 45px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -138,7 +112,7 @@ SWITCH BUTTON
 
 adapted from:
     UCSD Coding Bootcamp (https://git.bootcampcontent.com/University-of-California---San-Diego/UCSD-VIRT-FSF-PT-09-2023-U-LOLC/-/blob/d5e6546770e3a300de6659bbe57c3cc0da5bb293/04-Web-APIs/01-Activities/11-Ins_Event-Listener/assets/css/style.css)
-    W3Schools: (https://www.w3schools.com/howto/howto_css_switch.asp)
+    W3Schools (https://www.w3schools.com/howto/howto_css_switch.asp)
 =============
 */
 
@@ -147,7 +121,7 @@ adapted from:
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: 26px;
 }
 
 /* disable default HTML checkbox */
@@ -165,7 +139,7 @@ adapted from:
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--dawn-overlay); /* color: dark mode toggled OFF */
+    background-color: var(--light-toggle); /* light mode toggled ON */
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -173,32 +147,32 @@ adapted from:
 .toggle:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 18px;
+    width: 18px;
     left: 4px;
     bottom: 4px;
-    background-color: var(--dawn-text); /* color: toggle switch button */
+    background-color: var(--tokyo-toggle); /* toggle switch button */
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked + .toggle {
-    background-color: #ebbcba; /* color: dark mode toggled ON */
+    background-color: var(--storm-toggle); /* dark mode toggled ON */
 }
 
-/* input:focus + .slider {
-    box-shadow: black;
-} */
+input:focus + .toggle {
+    box-shadow: #0f0f14;
+}
 
 input:checked + .toggle:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(34px);
+    -ms-transform: translateX(34px);
+    transform: translateX(34px);
 }
 
 /* style round toggle switch */
 .toggle.round {
-    border-radius: 34px;
+    border-radius: 26px;
 }
 
 .toggle.round:before {
@@ -223,7 +197,9 @@ GRID & GRID ITEMS
 }
 
 .grid-item2 {
-    font-size: 2rem;
+    font-family: 'Raleway Semibold', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 400;
     place-self: center end;
 }
 
@@ -233,6 +209,8 @@ GRID & GRID ITEMS
 
 .grid-item4 {
     font-size: 1.75rem;
+    font-style: italic;
+    font-weight: 300;
     grid-row: 2 / span 1;
     place-self: start start;
     row-gap: 10px;
@@ -256,72 +234,95 @@ LIGHT & DARK THEMES
 ===================
 */
  
-/* light mode */
+/* LIGHT MODE */
 .light {
-    background-color: var(--dawn-base);
-    color: #3d3b39;
-    /* height: 100vh; */
+    background-color: var(--light-base);
 }
 
 .light body {
-    background-color: var(--dawn-base);
-    color: #3d3b39;
+    background-color: var(--light-base);
+    color: var(--light-text);
 }
 
 .light div h1 h2 h3 p {
-    color: #3d3b39;
-}
-
-.light textarea {
-    background-color: #f4e6d8;
-    color: var(--dawn-text);
+    color: var(--light-text);
 }
 
 .light .grid-item1 .grid-item4 .grid-item5 .grid-item6 {
-    color: #3d3b39;
+    color: var(--light-text);
 }
 
 .light .grid-item2 {
-    color: var(--dawn-love);
+    color: #5a4a78;
 }
 
 .light .grid-item4 {
-    color: #dcad7d;
+    color: #8c4351;
 }
 
 .light .hour {
-    color: #7d817c;
+    background-color: var(--light-colbgd);
+    color: var(--light-colfgd);
+    border-top: 2px dashed var(--light-border);
 }
 
-/* dark mode */
+.light .row {
+    border: 2px var(--light-border);
+}
+
+.light .saveBtn {
+    background-color: var(--light-colbgd);
+    color: var(--light-colfgd);
+    border-top: 2px var(--light-border);
+}
+
+.light textarea {
+    border-top: 2px var(--light-border);
+}
+
+/* DARK MODE */
 .dark {
-    background-color: var(--moon-base);
-    color: var(--moon-text);
-    /* height: 100vh; */
+    background-color: var(--storm-base);
+    color: var(--storm-text);
 }
 
 .dark body {
-    background-color: var(--moon-base);
-    color: var(--moon-text);
+    background-color: var(--storm-base);
+    color: var(--storm-text);
 }
 
 .dark div h1 h2 h3 p {
-    color: var(--moon-text);
-}
-
-.dark textarea {
-    background-color: var(--moon-overlay);
-    color: var(--moon-text);
+    color: var(--storm-text);
 }
 
 .dark .grid-item1 .grid-item4 .grid-item5 .grid-item6 {
-    color: var(--moon-text);
+    color: var(--storm-text);
 }
 
 .dark .grid-item2 {
-    color: var(--moon-love);
+    color: #bb9af7;
 }
 
 .dark .grid-item4 {
-    color: #dcad7d;
+    color: #f7768e;
+}
+
+.dark .hour {
+    background-color: var(--storm-colbgd);
+    color: var(--storm-colfgd);
+    border-top: 2px dashed var(--storm-border);
+}
+
+.dark .row {
+    border: 2px var(--storm-border);
+}
+
+.dark .saveBtn {
+    background-color: var(--storm-colbgd);
+    color: var(--storm-colfgd);
+    border-top: 2px var(--storm-border);
+}
+
+.dark textarea {
+    border-top: 2px var(--storm-border);
 }

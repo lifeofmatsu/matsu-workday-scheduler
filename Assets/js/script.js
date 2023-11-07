@@ -1,7 +1,6 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-$(function() {
+// starter code provided by Xandromus and team with the UCSD Coding Bootcamp.
+
+$(() => {
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -18,78 +17,94 @@ $(function() {
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
-    //
-    // TODO: Add code to display the current date in the header of the page.
 
-    //variable for date tracking
-    var currentDate = dayjs().format('MM-DD-YYYY');
-    // var userSelection = dayjs();
+    //variable for date handling
+    var currentDate = dayjs();
+    var timeBlockEl = $('.time-block');
+    var monthYearEl = $('#monthYear');
+    var monthDayEl = $('#monthDay');
     
-    //variable for data saving
+    //variable for data storage
     var saveBtnEl = $('.saveBtn');
-
 
     //variables for toggling color theme
     var isLight = true;
     var lightThemeEl = $('.light');
     var themeToggleEl = $('#theme-toggle');
 
-    function init() {
+    //main function is called below
+    const main = () => {
         setDate();
-        updateTimeslot();
+        renderTimeslot();
         getEntry();
     }
 
-    function updateTimeslot() {
+    //categorize time slots on calendar day into 'past', 'present', and 'future' classes
+    const renderTimeslot = () => {
         var present = dayjs();
 
-        $('.time-block').each(function() {
-            var timeBlock = parseInt($(this).attr('id').val(), 10);
+        timeBlockEl.each(function() {
+            var temp = $(this).attr('id').replace('hour-', ''); //eg, 'hour-15' becomes '15'
+            var timeSlot = parseInt(temp, 10); //eg., parses string '15' into int '15'; expects base 10
 
-            if (timeBlock < present.hour()) {
+            if (timeSlot < present.hour()) {  
                 $(this).addClass('past');
-            } else if (timeBlock === present.hour()) {
-                $(this).addClass('present');
-            } else {
+            } else if (timeSlot > present.hour()) {
                 $(this).addClass('future');
-            }
-        });
-    }
-
-    //setter function to assign current date to header display
-    function setDate() {
-        var monthYear = dayjs();
-        var monthDay = dayjs();
-
-        $('#monthYear').text((monthYear).format('MMMM YYYY'));
-        $('#monthDay').text((monthDay).format('dddd - MMM D'));
-        // $('#monthDay').text((monthDay).format('dddd, ' + 'MMM'.toUpperCase() + ' D'));
-    }
-
-    //getter function to retrieve user entry from given time-block save
-    function getEntry() {
-        $('.time-block').each(function() {
-            var tempHour = $(this).attr('id');
-            var tempEntry = localStorage.getItem(currentDate + ':' + tempHour);
-
-            if (tempEntry !== null) {
-                $(this).find('.description').val(tempEntry);
             } else {
-                $(this).find('.description').val('');
-
+                $(this).addClass('present');
             }
+
+            // if (currentDate.isBefore(present, 'day')) {
+            //     $(this).addClass('past');
+            // } else if (currentDate.isAfter(present, 'day')) {
+            //     $(this).addClass('future');
+            // } else { //if 'currentDate' and 'present' are the same day,
+            //     //check whether the currently itterated time block is before, after, or the current hour itself.
+            //     if (timeSlot < present.hour()) {  
+            //         $(this).addClass('past');
+            //     } else if (timeSlot > present.hour()) {
+            //         $(this).addClass('future');
+            //     } else {
+            //         $(this).addClass('present');
+            //     }
+            // }
         });
     }
 
     //setter function to store user entry from given time-block save
-    function setEntry(hour, entry) {
-        localStorage.setItem(currentDate + ':' + hour, entry);
+    const setEntry = (hour, entry) => {
+        var tempDate = currentDate.format('YYYY-MM-DD');
+        localStorage.setItem(tempDate + '-' + hour, entry);
+    }
+
+    //getter function to retrieve user entry from given time-block save
+    const getEntry = () => {
+        timeBlockEl.each(function() {
+            var tempDate = currentDate.format('YYYY-MM-DD');
+            var timeSlot = $(this).attr('id');
+            var tempEntry = localStorage.getItem(tempDate + '-' + timeSlot);
+
+            if (tempEntry !== null) {
+                $(this).find('.description').val(tempEntry);
+            } 
+        });
+    }
+
+    //setter function to assign current date to header display
+    const setDate = () => {
+        var monthYear = currentDate.format('MMMM YYYY');
+        var monthDay = currentDate.format('dddd - MMM D');
+
+        monthYearEl.text(monthYear);
+        monthDayEl.text(monthDay.toLowerCase());
     }
 
     //event listener stores calendar event on user action
     saveBtnEl.on('click', function() {
-        var nearestHour = $(this).closest('.time-block').attr('id');
+        var nearestHour = $(this).closest(timeBlockEl).attr('id');
         var userEntry = $(this).siblings('.description').val();
+
         setEntry(nearestHour, userEntry);
         alert('Calendar entry has successfully saved');
     });
@@ -99,14 +114,12 @@ $(function() {
         if (isLight) {
             lightThemeEl.attr('class', 'dark');
             isLight = !isLight;
-            console.log(isLight);
         } else {
             lightThemeEl.attr('class', 'light');
             isLight = !isLight;
-            console.log(isLight);
         }
     });
 
-    
-    init();
+
+    main();
 });
