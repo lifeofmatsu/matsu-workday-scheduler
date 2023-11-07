@@ -1,23 +1,6 @@
 // starter code provided by Xandromus and team with the UCSD Coding Bootcamp.
 
 $(() => {
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the 'hour-x' id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
-    //
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-    //
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
-
     //variable for date handling
     var currentDate = dayjs();
     var timeBlockEl = $('.time-block');
@@ -41,34 +24,19 @@ $(() => {
 
     //categorize time slots on calendar day into 'past', 'present', and 'future' classes
     const renderTimeslot = () => {
-        var present = dayjs();
-
         timeBlockEl.each(function() {
+            var present = dayjs().hour();
             var temp = $(this).attr('id').replace('hour-', ''); //eg, 'hour-15' becomes '15'
             var timeSlot = parseInt(temp, 10); //eg., parses string '15' into int '15'; expects base 10
 
-            if (timeSlot < present.hour()) {  
+            //add time classes to time-block divs
+            if (timeSlot < present) {  
                 $(this).addClass('past');
-            } else if (timeSlot > present.hour()) {
+            } else if (timeSlot > present) {
                 $(this).addClass('future');
             } else {
                 $(this).addClass('present');
             }
-
-            // if (currentDate.isBefore(present, 'day')) {
-            //     $(this).addClass('past');
-            // } else if (currentDate.isAfter(present, 'day')) {
-            //     $(this).addClass('future');
-            // } else { //if 'currentDate' and 'present' are the same day,
-            //     //check whether the currently itterated time block is before, after, or the current hour itself.
-            //     if (timeSlot < present.hour()) {  
-            //         $(this).addClass('past');
-            //     } else if (timeSlot > present.hour()) {
-            //         $(this).addClass('future');
-            //     } else {
-            //         $(this).addClass('present');
-            //     }
-            // }
         });
     }
 
@@ -101,16 +69,16 @@ $(() => {
     }
 
     //event listener stores calendar event on user action
-    saveBtnEl.on('click', function() {
-        var nearestHour = $(this).closest(timeBlockEl).attr('id');
-        var userEntry = $(this).siblings('.description').val();
+    saveBtnEl.on('click', (e) => {
+        var nearestHour = $(e.currentTarget).closest(timeBlockEl).attr('id');
+        var userEntry = $(e.currentTarget).siblings('.description').val();
 
         setEntry(nearestHour, userEntry);
         alert('Calendar entry has successfully saved');
     });
 
     //event listener toggles color theme given the current state
-    themeToggleEl.on('click', function() {
+    themeToggleEl.on('click', () => {
         if (isLight) {
             lightThemeEl.attr('class', 'dark');
             isLight = !isLight;
