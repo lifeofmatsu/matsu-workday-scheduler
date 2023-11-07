@@ -17,13 +17,14 @@
     --light-toggle: #cfc9c2; 
     --storm-toggle: #565a6e;
 
-    /* past, present, future themes sourced from Microsoft Excel cell styles*/
+    /* future and present themes sourced from Microsoft Excel cell styles*/
+    /* faded grey them for past obtained myself */
     --future-green: #006100;
     --future-green-bgd: #c6efce;
     --present-red: #9c0006;
     --present-red-bgd: #ffc7ce;
-    --past-faded: #bfbfbf;
-    --past-faded-bgd: #f2f2f2;
+    --past-faded: #73747a;
+    --past-faded-bgd: #aaacaf;
 }
 
 html {
@@ -85,6 +86,7 @@ textarea {
     border-radius: 15px;
 }
 
+/* rendering textareas based on past, present, and future criteria */
 .past textarea {
     background-color: #aaacaf;
     color: #73747a;
