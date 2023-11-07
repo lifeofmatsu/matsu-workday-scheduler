@@ -11,9 +11,9 @@ UCSD Coding Challenge 5 - Work Day Scheduler to save events for each hour of a t
 3. style.css - 
 
 ### Screenshot & URL
-Deployed Application: https://lifeofmatsu.github.io/matsu-password-gen/
+Deployed Application: https://lifeofmatsu.github.io/matsu-workday-scheduler/
 
-GitHub Repo: https://github.com/lifeofmatsu/matsu-password-gen.git
+GitHub Repo: https://github.com/lifeofmatsu/matsu-workday-scheduler.git
 
 
 
